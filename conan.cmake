@@ -295,7 +295,7 @@ function(conan_cmake_detect_unix_libcxx result)
 endfunction()
 
 function(conan_cmake_detect_vs_runtime result)
-    string(TOUPPER ${CMAKE_BUILD_TYPE} build_type)
+    string(TOUPPER ${_CONAN_SETTING_BUILD_TYPE} build_type)
     set(variables CMAKE_CXX_FLAGS_${build_type} CMAKE_C_FLAGS_${build_type} CMAKE_CXX_FLAGS CMAKE_C_FLAGS)
     foreach(variable ${variables})
         if(NOT "${${variable}}" STREQUAL "")
