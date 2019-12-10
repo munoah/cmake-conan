@@ -464,9 +464,8 @@ endmacro()
 
 macro(conan_cmake_run)
     parse_arguments(${ARGV})
-
-    if(CMAKE_CONFIGURATION_TYPES AND NOT CMAKE_BUILD_TYPE AND NOT CONAN_EXPORTED
-            AND NOT ARGUMENTS_BUILD_TYPE)
+    get_cmake_property(IS_MULTI_CONFIG GENERATOR_IS_MULTI_CONFIG)
+    if(IS_MULTI_CONFIG AND NOT ARGUMENTS_BUILD_TYPE)
         set(CONAN_CMAKE_MULTI ON)
         message(STATUS "Conan: Using cmake-multi generator")
     else()
